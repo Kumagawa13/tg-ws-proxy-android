@@ -28,9 +28,12 @@ jobs:
 
     - name: Build Native Libraries (Rust)
       run: |
-        # Используем предустановленный в системе Android NDK
-        export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-bundle
+        # Указываем точный путь к установленному NDK, который выдала система
+        export ANDROID_NDK_HOME="/usr/local/lib/android/sdk/ndk/27.3.13750724"
+        export ANDROID_NDK_ROOT="/usr/local/lib/android/sdk/ndk/27.3.13750724"
         cargo ndk -t armeabi-v7a -t arm64-v8a -o app/src/main/jniLibs build --release
+
+
 
     - name: Build APK (Gradle)
       run: |
